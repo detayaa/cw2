@@ -1,33 +1,40 @@
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Tasks implements LocalTime {
-    String name;
-    String describe;
-    String type;
+    private final String name;
+    private final String describe;
+    private final String type;
+    private final LocalDateTime taskDate;
     private static int i = 0;
     private final int id;
-    String repeatability;
+    private final String repeatability;
     private static final String NO_TEXTS = "Не введены данные";
 
-    public Tasks(String name, String describe, String type, String repeatability) throws WrongTextsException {
+    public Tasks(String name, String describe, String type, String repeatability, LocalDateTime taskDate) throws WrongTextsException {
         if (name != null && name.isEmpty() && name.isBlank()) {
             throw new WrongTextsException(NO_TEXTS);
         } else {
-            this.name = name;}
+            this.name = name;
+        }
         if (describe != null && describe.isEmpty() && describe.isBlank()) {
             throw new WrongTextsException(NO_TEXTS);
-        } else {this.describe = describe;
+        } else {
+            this.describe = describe;
         }
         if (type != null && type.isEmpty() && type.isBlank()) {
             throw new WrongTextsException(NO_TEXTS);
-        } else {this.type = type;
+        } else {
+            this.type = type;
         }
         if (repeatability != null && repeatability.isEmpty() && repeatability.isBlank()) {
             throw new WrongTextsException(NO_TEXTS);
-        } else {this.repeatability = repeatability;
+        } else {
+            this.repeatability = repeatability;
         }
         i++;
         this.id = i;
+        this.taskDate = taskDate;
 
     }
 
@@ -39,9 +46,6 @@ public class Tasks implements LocalTime {
         return repeatability;
     }
 
-    public void setRepeatability(String repeatability) {
-        this.repeatability = repeatability;
-    }
     public int getId() {
         return id;
     }
@@ -50,24 +54,13 @@ public class Tasks implements LocalTime {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getDescribe() {
         return describe;
     }
 
-    public void setDescribe(String describe) {
-        this.describe = describe;
-    }
 
     public String getType() {
         return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     @Override
@@ -115,7 +108,7 @@ public class Tasks implements LocalTime {
             LocalTimeWeek();
         } else if (getRepeatability() == "ежемесячная") {
             LocalTimeMonth();
-        } else if (getRepeatability() == "ежегодная"){
+        } else if (getRepeatability() == "ежегодная") {
             LocalTimeYear();
         }
 

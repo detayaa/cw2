@@ -7,21 +7,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws WrongTextsException {
 
-//        HashMap<String, Integer> tasks = new HashMap();
-//
-//        Tasks hair = new Tasks("Стрижка", "сходить в парикмахерскую", "личная", "ежемесячная");
-//        hair.tasks();
-//        hair.Time();
-//        tasks.put(hair.getName(), hair.getId());
-//        Tasks petShop = new Tasks("Зоомагазин", "купить корм собаке", "личная", "еженедельная");
-//        petShop.tasks();
-//        petShop.Time();
-//        tasks.put(petShop.getName(), petShop.getId());
-//        Tasks meetings = new Tasks("Встреча", "созвониться с коллегами", "рабочая", "однократная");
-//        meetings.tasks();
-//        meetings.Time();
-//        tasks.put(meetings.getName(), hair.getId());
-//        System.out.println(tasks);
 
 
         try (Scanner scanner = new Scanner(System.in)) {
@@ -35,8 +20,8 @@ public class Main {
                         case 1:
                             inputTask(scanner);
                             describe(scanner);
-                            readTaskType(scanner);
-                            dayTime(scanner);
+                            TaskType type = readTaskType(scanner);
+                            LocalDateTime time = dayTime(scanner);
                             break;
                         case 2:
                             removeTask(scanner);
@@ -55,7 +40,7 @@ public class Main {
         }
     }
 
-    private static void inputTask(Scanner scanner) {
+    public static void inputTask(Scanner scanner) {
         System.out.println("Введите название задачи:");
         String name = scanner.next();
 
@@ -111,9 +96,9 @@ public class Main {
             try {
                 System.out.println("Введите дату выполнения задачи: ");
                 String dateTimeToken = scanner.nextLine();
-                return LocalDateTime.parse(dateTimeToken, DateTimeFormatter.ofPattern("dd.MM.yyyy hh:mm"));
+                return LocalDateTime.parse(dateTimeToken, DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm"));
             } catch (DateTimeParseException e) {
-                System.out.println("Неправильно введена дата, попробуйте ввести в формате - dd.MM.yyyy hh:mm");
+                System.out.println("Попробуйте ввести в формате - dd.MM.yyyy hh:mm");
             }
         }
     }
