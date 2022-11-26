@@ -42,7 +42,6 @@ public class Tasks implements LocalTime {
     public void setRepeatability(String repeatability) {
         this.repeatability = repeatability;
     }
-
     public int getId() {
         return id;
     }

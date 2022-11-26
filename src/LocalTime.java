@@ -5,7 +5,6 @@ public interface LocalTime {
 
     default void LocalTimeNow() {
     }
-
     default void LocalTimeTomorrow() {
     }
 
