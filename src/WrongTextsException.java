@@ -5,5 +5,4 @@ public class WrongTextsException extends Exception {
     public WrongTextsException(String massage) {
         super(massage);
     }
-
 }

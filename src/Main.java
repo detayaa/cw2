@@ -4,7 +4,6 @@ public class Main {
     public static void main(String[] args) throws WrongTextsException {
 
         HashMap<String, Integer> tasks = new HashMap();
-
         Tasks hair = new Tasks("Стрижка", "сходить в парикмахерскую", "личная", "ежемесячная");
         hair.tasks();
         hair.Time();
